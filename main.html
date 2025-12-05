@@ -2,20 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Speed Scrubber</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Video Player</title>
+  <style>
+    .player {
+      max-width: 750px;
+      margin: 20px auto;
+      background: #222;
+      color: white;
+      padding: 10px;
+      font-family: Arial;
+    }
+
+    video {
+      width: 100%;
+    }
+
+    .player__controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .progress {
+      background: #555;
+      height: 10px;
+      width: 100%;
+      cursor: pointer;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .progress__filled {
+      background: #00ccff;
+      width: 0%;
+      height: 100%;
+      transition: width 0.1s;
+    }
+
+    input[type="range"] {
+      width: 80px;
+    }
+
+    button, .player__button {
+      cursor: pointer;
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" controls></video>
-    <div class="speed">
-      <div class="speed-bar">1×</div>
-    </div>
+<div class="player">
+
+  <video class="viewer"
+         src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+
+  <div class="progress">
+    <div class="progress__filled"></div>
   </div>
 
-<script  src="./script.js">
-  //Your code goes here
-</script>
+  <div class="player__controls">
+    <button class="player__button toggle">►</button>
+
+    <button data-skip="-10">« 10s</button>
+    <button data-skip="25">25s »</button>
+
+    <label>Volume 
+      <input type="range" name="volume" class="volume" min="0" max="1" step="0.05" value="1">
+    </label>
+
+    <label>Speed 
+      <input type="range" name="playbackSpeed" class="playbackSpeed" min="0.5" max="2" step="0.1" value="1">
+    </label>
+  </div>
+
+</div>
+
+<script src="scripts.js"></script>
 </body>
 </html>
